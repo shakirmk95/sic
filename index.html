@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html style="height: 100%;width: 100%;">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+	<title></title>
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="css/materialize.min.css">
+	<link rel="stylesheet" href="css/animate.css">
+    <style type="text/css">
+        .reg {
+            padding: 16px;
+            width: 152px;
+            text-align: center;
+            background: #1565C0;
+            color: #fff;
+            margin: auto;
+            text-decoration: none;
+            color: #fff;
+            text-align: center;
+            letter-spacing: .5px;
+            -webkit-transition: .2s ease-out;
+            transition: .2s ease-out;
+            cursor: pointer;
+            font-size: 1rem;
+            outline: 0;
+            border: none;
+            border-radius: 2px;
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+        }        .reg:hover {
+            background: #155194;
+        }
+        .upper:hover {
+            color: #fff;
+            background-color: rgba(203, 203, 203, 0.53);
+        }
+        .drop {
+            padding: 12px;
+            width: 60px;
+            height: 45px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyAK3rFEGyCzUd7QUinjiSEAtnztbTR4m44",
+        authDomain: "sicreg-6d789.firebaseapp.com",
+        databaseURL: "https://sicreg-6d789.firebaseio.com",
+        projectId: "sicreg-6d789",
+        storageBucket: "",
+        messagingSenderId: "900285567360"
+      };
+      firebase.initializeApp(config);
+    </script>
+</head>
+<body style="height: 100%;width: 100%;background: #fafafa;">
+    <div style="background: #fafafa;">
+        <div class="row container">
+            <div class="col m3 s8">
+                <img src="img/logo.png" style="width: 180px;">
+            </div>
+            <div class="col m7 push-m2 hide-on-small-only">
+                <ul class="row" style="text-align: center;margin-top: 50px;">
+                    <div class="col m4"><div class="upper" style="height: 45px;padding: 12px;"><a href="#" style="color: #222;"><li>Home</li></a></div></div>
+                    <div class="col m4 login"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/login/" style="color: #222;"><li>Login</li></a></div></div>
+                    <div class="col m4 hide logout"><div class="upper" style="height: 45px;padding: 12px;"><a href="#" style="color: #222;" onclick="signout()"><li>LogOut</li></a></div></div>
+                    <div class="col m4 register"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/register/" style="color: #222;"><li>Register</li></a></div></div>
+                    <div class="col m4 hide dashboard"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/dashboard/" style="color: #222;"><li>Dashboard</li></a></div></div>
+                </ul>
+            </div>
+            <div class="s4 hide-on-med-and-up" style="position: relative;right: -30px; bottom: -30px;">
+                <div class='dropdown-button drop' data-activates='dropdown1'><span>Menu</span></div>
+            </div>
+            <ul id='dropdown1' class='dropdown-content'>
+                <div><a href="#"><li style="padding: 15px;font-weight: 400;">Home</li></a></div>
+                <div class="login"><a href="http://sic.iedctkmce.com/login/"><li style="padding: 15px;font-weight: 400;">Login</li></a>
+                <div class="hide logout"><a href="#" onclick="signout()"><li style="padding: 15px;font-weight: 400;">LogOut</li style="padding: 15px;font-weight: 500;"></a></div>
+                <div class="register"><a href="http://sic.iedctkmce.com/register/"><li style="padding: 15px;font-weight: 400;">Register</li></a></div>
+                <div class="hide dashboard"><a href="http://sic.iedctkmce.com/dashboard/"><li style="padding: 15px;font-weight: 400;">Dashboard</li></a></div>
+            </ul>
+        </div>
+    </div>
+    <div class="" style="margin-top: 50px auto;;">
+        <div class="container" style="background: #fff;margin: 20px auto;padding: 1px 40px;">
+            <!-- <div> -->
+                <!-- <a href="register/index.html"><div class="reg">REGISTER NOW</div></a> -->
+            <!-- </div> -->
+            <div style="margin: 50px auto;">
+                <div>
+                    <h5 style="text-decoration: underline;">Objective</h5>
+                    <p>As part of Sukrita 17, IEDC TKMCE is planning to conduct a social Innovation Challenge, in which selected teams can pitch their socially innovative idea in front of a panel during Sukrita. The competition offers an opportunity for the participants to learn deeply their academic subjects and creatively apply the knowledge thus obtained to build a successful professional career along with social ethics.</p>
+                </div>
+            </div>
+            <div style="margin: 50px auto;">
+                <div>
+                    <h5 style="text-decoration: underline;">Timeline</h5>
+                    <ul>
+                        <li style="list-style-type: disc;margin-left: 40px;">Registration Starting on November 2 using IEDC Website.</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Last Date to Submit Abstract/Blue Print November 7.</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">A Panel Including Staff and Students Scrutinize the entries and announce the Selection results on November 8.</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Teams Selected needs to submit their Pitch deck on November 11.</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Selected teams can pitch their idea in front of the panel.</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin: 50px auto;">
+                <div>
+                    <h5 style="text-decoration: underline;">Rules</h5>
+                    <ul>
+                        <li style="list-style-type: disc;margin-left: 40px;">Teams Should follow the deadlines and important Dates.</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Selection is based on Social relevance and depth of Innovation in the abstract submitted.</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Preference for easily implementable ideas that can solve social issues in and around campus.</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Each teams will be given 10 minutes of time to pitch their Idea.</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Pitch Deck (PPT) should be submitted one day prior to the event. And can have a maximum of 8 Slides.</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin: 50px auto;">
+                <div>
+                    <h5 style="text-decoration: underline;">Topics</h5>
+                    <ul>
+                        <li style="list-style-type: disc;margin-left: 40px;">Technologies to safeguard life and properties during natural disasters</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Technologies to tackle effects of climatic change</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Women safety</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Waste management</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Digital literacy</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">E-governance</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Educational tools</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Renewable energy</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Smart City projects</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Technology to ease life of people in high population density areas</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Smartphone based technologies made focusing on third world countries</li>
+                        <li style="list-style-type: disc;margin-left: 40px;">Technologies to observe the effects of climate change</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin: 50px auto;">
+                <div>
+                    <h5 style="text-decoration: underline;">Prizes</h5>
+                    <ul>
+                        <li style="margin-left: 40px;">First Prize: Rs.6000</li>
+                        <li style="margin-left: 40px;">Second Prize: Rs.3000</li>
+                        <li style="margin-left: 40px;">Third Prize: Rs.1000</li>
+                    </ul>
+                </div>
+            </div>
+            <div>
+                <a href="http://sic.iedctkmce.com/register/"><div class="reg">REGISTER NOW</div></a>
+            </div>
+        </div>
+    </div>
+    <script src="js/db.js"></script>
+	<script src="js/jquery 3.1.1.min.js"></script>
+	<script src="js/materialize.min.js"></script>
+	<script src="js/query.js"></script>
+    <script type="text/javascript">
+        firebase.auth().onAuthStateChanged(function(user) {
+            if (user) {
+                $(".login").addClass("hide");
+                $(".register").addClass("hide");
+                $(".logout").removeClass("hide");
+                $(".dashboard").removeClass("hide");
+            } else {
+                $(".logout").addClass("hide");
+                $(".dashboard").addClass("hide");
+                $(".login").removeClass("hide");
+                $(".register").removeClass("hide");
+            }
+        });
+        function signout() {
+            firebase.auth().signOut().then(function() {
+              // Sign-out successful.
+            }).catch(function(error) {
+              alert("You are not logged in to logout.");
+            });
+        }
+    </script>
+</body>
+</html>

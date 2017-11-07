@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+	<title>Social Innovation Challenge | Sukrita 17 | IEDC TKMCE, Steps TKMCE</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
+	<style type="text/css">
+		body {
+			font-family: 'Catamaran', sans-serif;
+		}
+		.upper:hover {
+			color: #fff;
+			background-color: rgba(203, 203, 203, 0.53);
+		}
+		.reg {
+		    padding: 16px;
+		    width: 152px;
+		    text-align: center;
+		    background: #1565C0;
+		    color: #fff;
+		    margin: auto;
+		    text-decoration: none;
+		    color: #fff;
+		    text-align: center;
+		    letter-spacing: .5px;
+		    -webkit-transition: .2s ease-out;
+		    transition: .2s ease-out;
+		    cursor: pointer;
+		    font-size: 1rem;
+    		outline: 0;
+    		border: none;
+    		border-radius: 2px;
+		    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+		}
+		.reg:hover {
+		    background: #155194;
+		}
+        .drop {
+            padding: 12px;
+            width: 60px;
+            height: 45px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn1 {
+		    background: #1565C0;
+    	    float: left;
+		    height: 3rem;
+		    line-height: 3rem;
+		    text-decoration: none;
+		    color: #fff;
+		    text-align: center;
+		    letter-spacing: .5px;
+		    -webkit-transition: .2s ease-out;
+		    transition: .2s ease-out;
+		    cursor: pointer;
+		    font-size: 1rem;
+    		outline: 0;
+    		border: none;
+    		border-radius: 2px;
+		    display: inline-block;
+		    padding: 0 2rem;
+		    text-transform: uppercase;
+		    vertical-align: middle;
+		    -webkit-tap-highlight-color: transparent;
+		    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+        }
+        .btn1:hover {
+		    background: #155194;        	
+        }
+	</style>
+	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyAK3rFEGyCzUd7QUinjiSEAtnztbTR4m44",
+	    authDomain: "sicreg-6d789.firebaseapp.com",
+	    databaseURL: "https://sicreg-6d789.firebaseio.com",
+	    projectId: "sicreg-6d789",
+	    storageBucket: "sicreg-6d789.appspot.com",
+	    messagingSenderId: "900285567360"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+</head>
+<body>
+	<div style="background: #f9f9f9;">
+		<div class="row container">
+			<div class="col m3 s8">
+				<img src="../img/logo.png" style="width: 180px;">
+			</div>
+	        <div class="col m7 push-m2 hide-on-small-only">
+	            <ul class="row" style="text-align: center;margin-top: 50px;">
+	                <div class="col m4"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/" style="color: #222;"><li>Home</li></a></div></div>
+	                <div class="col m4 login"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/login/" style="color: #222;"><li>Login</li></a></div></div>
+	                <div class="col m4 hide logout"><div class="upper" style="height: 45px;padding: 12px;"><a href="#" style="color: #222;" onclick="signout()"><li>LogOut</li></a></div></div>
+	            </ul>
+	        </div>
+            <div class="s4 hide-on-med-and-up" style="position: relative;right: -30px; bottom: -30px;">
+                <div class='dropdown-button drop' data-activates='dropdown1'><span>Menu</span></div>
+            </div>
+            <ul id='dropdown1' class='dropdown-content'>
+                <div><a href="http://sic.iedctkmce.com/"><li style="padding: 15px;font-weight: 400;">Home</li></a></div>
+                <div class="login"><a href="http://sic.iedctkmce.com/login/"><li style="padding: 15px;font-weight: 400;">Login</li></a>
+                <div class="hide logout"><a href="#" onclick="signout()"><li style="padding: 15px;font-weight: 400;">LogOut</li style="padding: 15px;font-weight: 500;"></a></div>
+                <div class="register"><a href="http://sic.iedctkmce.com/register/"><li style="padding: 15px;font-weight: 400;">Register</li></a></div>
+                <div class="hide dashboard"><a href="#"><li style="padding: 15px;font-weight: 400;">Dashboard</li></a></div>
+            </ul>
+        </div>
+	</div>
+	<div>
+		<div class="container">
+			<h4>ADMIN PANEL</h4>
+		</div>
+		<div class="row">
+			<h5 class="container" style="margin: 50px auto 20px;">Total Registrations (<span id="count"></span>)</h5>
+			<div style="background: #f2f2f2;">
+				<div class="row container" style="padding: 40px;">
+					<div class="col s12 m12">
+						<div class="append1">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../js/jquery 3.1.1.min.js"></script>
+	<script src="../js/materialize.min.js"></script>
+	<script>
+	    var database = firebase.database();
+		firebase.auth().onAuthStateChanged(function(user) {
+			if (user && user.email == 'admin@sic.iedctkmce.com') {
+                $(".login").addClass("hide");
+                $(".logout").removeClass("hide");
+				var query = firebase.database().ref("users").orderByKey();
+				var query1 = firebase.database().ref("stages").orderByKey();
+		        query.once("value").then(function(snapshot) {
+		            snapshot.forEach(function(childSnapshot) {
+		            	if(childSnapshot.child("Phase1").val() == true) {
+					        query1.once("value").then(function(snapshot1) {
+					            snapshot1.forEach(function(childSnapshot1) {
+					            	if(childSnapshot1.key == childSnapshot.key) {
+					            		var filenm = childSnapshot1.child("P1File").val();
+								        var starsRef = firebase.storage().ref('/PhaseOne/' + filenm);
+								        starsRef.getDownloadURL().then(function(url) {
+		            						$('.append1').append('<div class="row"><div class="col s4"><span style="font-weight: 600;">' + childSnapshot.child("Team").val() + '</span></div><div class="col s8"><div class="row"><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Team Leader: </div><div>' + childSnapshot.child("LName").val() + '</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Mobile: </div><div>' + childSnapshot.child("LMob").val() + '</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">College: </div><div>' + childSnapshot.child("College").val() +'</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Category: </div><div>' + childSnapshot.child("Category").val() + '</div></div><div class="col s12 m12"><div style="font-size: 10px;">Description: </div><div>' + childSnapshot.child("Description").val() + '</div></div><div class="col s12 m12 fileUpl1" style="margin-bottom: 10px;"><div>Phase1: <a href="' + url + '">' + filenm + '</a></div></div></div></div></div>');
+										}).catch(function(error) {
+											console.log('ERROR' + '_' + error);
+										});
+					            	}
+					            });
+					        });
+					    }else {
+		            		$('.append1').append('<div class="row"><div class="col s4"><span style="font-weight: 600;">' + childSnapshot.child("Team").val() + '</span></div><div class="col s8"><div class="row"><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Team Leader: </div><div>' + childSnapshot.child("LName").val() + '</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Mobile: </div><div>' + childSnapshot.child("LMob").val() + '</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">College: </div><div>' + childSnapshot.child("College").val() +'</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Category: </div><div>' + childSnapshot.child("Category").val() + '</div></div><div class="col s12 m12"><div style="font-size: 10px;">Description: </div><div>' + childSnapshot.child("Description").val() + '</div></div></div></div></div>');
+					    }
+		            });
+		        });
+	    		var i = 0;
+				query.once("value").then(function(snapshot) {
+		            snapshot.forEach(function(childSnapshot) {
+		            	i++;
+						$('#count').text(i);
+		            });
+		        });
+            } else {
+                $(".logout").addClass("hide");
+                $(".login").removeClass("hide");
+                window.location.replace("http://sic.iedctkmce.com/login/"); 
+			}
+		});
+		function signout() {
+			firebase.auth().signOut().then(function() {
+			  // Sign-out successful.
+			}).catch(function(error) {
+			  alert("You are not logged in to logout.");
+			});
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+	<title>Social Innovation Challenge | Sukrita 17 | IEDC TKMCE, Steps TKMCE</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/materialize.min.css">
+	<link rel="stylesheet" href="../css/animate.css">
+	<link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
+	<style type="text/css">
+		body {
+			font-family: 'Catamaran', sans-serif;
+		}
+		.upper:hover {
+			color: #fff;
+			background-color: rgba(203, 203, 203, 0.53);
+		}
+		.reg {
+		    padding: 16px;
+		    width: 152px;
+		    text-align: center;
+		    background: #1565C0;
+		    color: #fff;
+		    margin: auto;
+		    text-decoration: none;
+		    color: #fff;
+		    text-align: center;
+		    letter-spacing: .5px;
+		    -webkit-transition: .2s ease-out;
+		    transition: .2s ease-out;
+		    cursor: pointer;
+		    font-size: 1rem;
+    		outline: 0;
+    		border: none;
+    		border-radius: 2px;
+		    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+		}
+		.reg:hover {
+		    background: #155194;
+		}
+        .drop {
+            padding: 12px;
+            width: 60px;
+            height: 45px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+	</style>
+	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyAK3rFEGyCzUd7QUinjiSEAtnztbTR4m44",
+	    authDomain: "sicreg-6d789.firebaseapp.com",
+	    databaseURL: "https://sicreg-6d789.firebaseio.com",
+	    projectId: "sicreg-6d789",
+	    storageBucket: "",
+	    messagingSenderId: "900285567360"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+</head>
+<body>
+	<div style="background: #f9f9f9;">
+		<div class="row container">
+			<div class="col m3 s8">
+				<img src="../img/logo.png" style="width: 180px;">
+			</div>
+	        <div class="col m7 push-m2 hide-on-small-only">
+	            <ul class="row" style="text-align: center;margin-top: 50px;">
+	                <div class="col m4"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/" style="color: #222;"><li>Home</li></a></div></div>
+	                <div class="col m4 login"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/login/" style="color: #222;"><li>Login</li></a></div></div>
+	                <div class="col m4 hide logout"><div class="upper" style="height: 45px;padding: 12px;"><a href="#" style="color: #222;" onclick="signout()"><li>LogOut</li></a></div></div>
+	                <div class="col m4 register"><div class="upper" style="height: 45px;padding: 12px;"><a href="#" style="color: #222;"><li>Register</li></a></div></div>
+	                <div class="col m4 hide dashboard"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/dashboard/" style="color: #222;"><li>Dashboard</li></a></div></div>
+	            </ul>
+	        </div>
+            <div class="s4 hide-on-med-and-up" style="position: relative;right: -30px; bottom: -30px;">
+                <div class='dropdown-button drop' data-activates='dropdown1'><span>Menu</span></div>
+            </div>
+            <ul id='dropdown1' class='dropdown-content'>
+                <div><a href="http://sic.iedctkmce.com/"><li style="padding: 15px;font-weight: 400;">Home</li></a></div>
+                <div class="login"><a href="http://sic.iedctkmce.com/login/"><li style="padding: 15px;font-weight: 400;">Login</li></a>
+                <div class="hide logout"><a href="#" onclick="signout()"><li style="padding: 15px;font-weight: 400;">LogOut</li style="padding: 15px;font-weight: 500;"></a></div>
+                <div class="register"><a href="#"><li style="padding: 15px;font-weight: 400;">Register</li></a></div>
+                <div class="hide dashboard"><a href="http://sic.iedctkmce.com/dashboard/"><li style="padding: 15px;font-weight: 400;">Dashboard</li></a></div>
+            </ul>
+        </div>
+	</div>
+	<div>
+		<div class="container">
+			<h4>REGISTRATION PAGE</h4>
+			<p><span>Instructions</span></p>
+			<ul style="list-style-type: disc;margin-left: 40px;">
+				<li style="list-style-type: disc;">A team can have upto 4 members.</li>
+				<li style="list-style-type: disc;">Each Team will get a username and password after registration.</li>
+				<li style="list-style-type: disc;">There are few topics given below, Select your idea from them.</li>
+				<li style="list-style-type: disc;">Multiple registrations lead to cancellation of both.</li>
+				<li style="list-style-type: disc;">Any queries regarding registration, Contact 8089505502</li>
+			</ul>
+		</div>
+		<div class="row">
+			<form>
+				<h5 class="container" style="margin: 50px auto 20px;">Team details</h5>
+				<div style="background: #f2f2f2;">
+					<div class="row container" style="padding: 40px;">
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="tname" type="text" required>
+								<label for="tname">Team Name <span style="color: #ff0000;">*</span></label>
+							</div>
+							<div class="input-field col s12 m6">
+						   		<select id="ideaC" required>
+									<option value="0" disabled selected>Choose your option</option>
+			                        <option value="Technologies to safeguard life and properties during natural disasters">Technologies to safeguard life and properties during natural disasters</option>
+			                        <option value="Technologies to tackle effects of climatic change">Technologies to tackle effects of climatic change</option>
+			                        <option value="Women safety">Women safety</option>
+			                        <option value="Waste management">Waste management</option>
+			                        <option value="Digital literacy">Digital literacy</option>
+			                        <option value="E-governance">E-governance</option>
+			                        <option value="Educational tools">Educational tools</option>
+			                        <option value="Renewable energy">Renewable energy</option>
+			                        <option value="Smart City projects">Smart City projects</option>
+			                        <option value="Technology to ease life of people in high population density areas">Technology to ease life of people in high population density areas</option>
+			                        <option value="Smartphone based technologies made focusing on third world countries">Smartphone based technologies made focusing on third world countries</option>
+			                        <option value="Technologies to observe the effects of climate change">Technologies to observe the effects of climate change</option>
+								</select>
+								<label>Idea Category <span style="color: #ff0000;">*</span></label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m12">
+								<textarea id="ideaD" class="materialize-textarea"></textarea>
+								<label for="ideaD">Idea Description</label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+          						<input type="text" id="college" class="autocomplete">
+						        <label for="college">College <span style="color: #ff0000;">*</span></label>
+							</div>
+							<div class="input-field col s12 m6">
+						   		<select id="memCount" required>
+									<option value="0" disabled selected>Choose your option</option>
+			                        <option value="1">1</option>
+			                        <option value="2">2</option>
+			                        <option value="3">3</option>
+			                        <option value="4">4</option>
+								</select>
+								<label>Members Count <span style="color: #ff0000;">*</span></label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h5 class="container" style="margin: 50px auto 20px;">Team Leader details</h5>
+				<div style="background: #f2f2f2;">
+					<div class="row container" style="padding: 40px;">
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="tlname" type="text" required>
+								<label for="name">Name <span style="color: #ff0000;">*</span></label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="tladmi" type="text" required>
+								<label for="admi">College Admission No. <span style="color: #ff0000;">*</span></label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+						   		<select id="tlb" required>
+									<option value="0" disabled selected>Choose your option</option>
+			                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+			                        <option value="Electrical & Electronics Engineering">Electrical & Electronics Engineering</option>
+			                        <option value="Civil Engineering">Civil Engineering</option>
+			                        <option value="Mechanical Production Engineering">Mechanical Production Engineering</option>
+			                        <option value="Computer Science Engineering">Computer Science Engineering</option>
+			                        <option value="Electronics & Communication Engineering">Electronics & Communication Engineering</option>
+			                        <option value="Chemical Engineering">Chemical Engineering</option>
+			                        <option value="B.Arch">B.Arch</option>
+			                        <option value="MCA">MCA</option>
+			                        <option value="M.Tech">M.Tech</option>
+								</select>
+								<label>Branch <span style="color: #ff0000;">*</span></label>
+							</div>
+							<div class="input-field col s12 m6">
+								<select id="tly" required>
+									<option value="0" disabled selected>Choose your option</option>
+			                        <option value="First">First</option>
+			                        <option value="Second">Second</option>
+			                        <option value="Third">Third</option>
+			                        <option value="Fourth">Fourth</option>
+			                        <option value="Fifth">Fifth</option>
+								</select>
+								<label>Year <span style="color: #ff0000;">*</span></label>
+							</div>
+						</div>
+						<div class="row">
+							<div class="input-field col s12 m6">
+								<input id="tlemail" type="email" required validate>
+								<label for="email">Email <span style="color: #ff0000;">*</span></label>
+							</div>
+							<div class="input-field col s12 m6">
+								<input id="tlmob" type="number" required>
+								<label for="mob">Mobile <span style="color: #ff0000;">*</span></label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<h5 class="container" style="margin: 50px auto 20px;">Team Member details<h5>
+				<div style="background: #f2f2f2;">
+					<div class="row container" style="padding: 40px;">
+						<p style="font-size: 17px;margin-top: 40px;">Member 2:</p>
+						<div>
+							<div class="row">
+								<div class="input-field col s12 m4">
+									<input id="mzname" type="text">
+									<label for="name">Name</label>
+								</div>
+								<div class="input-field col s12 m4">
+									<input id="mzemail" type="email">
+									<label for="email">Email</label>
+								</div>
+								<div class="input-field col s12 m4">
+									<input id="mzmob" type="number">
+									<label for="mob">Mobile</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12 m4">
+									<input id="mzadmi" type="text">
+									<label for="admi">Admission No.</label>
+								</div>
+								<div class="input-field col s12 m4">
+							   		<select id="mzb">
+										<option value="0" disabled selected>Choose your option</option>
+				                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+				                        <option value="Electrical & Electronics Engineering">Electrical & Electronics Engineering</option>
+				                        <option value="Civil Engineering">Civil Engineering</option>
+				                        <option value="Mechanical Production Engineering">Mechanical Production Engineering</option>
+				                        <option value="Computer Science Engineering">Computer Science Engineering</option>
+				                        <option value="Electronics & Communication Engineering">Electronics & Communication Engineering</option>
+				                        <option value="Chemical Engineering">Chemical Engineering</option>
+				                        <option value="B.Arch">B.Arch</option>
+				                        <option value="MCA">MCA</option>
+				                        <option value="M.Tech">M.Tech</option>
+									</select>
+									<label>Branch</label>
+								</div>
+								<div class="input-field col s12 m4">
+									<select id="mzy">
+										<option value="0" disabled selected>Choose your option</option>
+				                        <option value="First">First</option>
+				                        <option value="Second">Second</option>
+				                        <option value="Third">Third</option>
+				                        <option value="Fourth">Fourth</option>
+				                        <option value="Fifth">Fifth</option>
+									</select>
+									<label>Year</label>
+								</div>
+							</div>
+						</div>
+						<p style="font-size: 17px;margin-top: 40px">Member 3:</p>
+						<div>
+							<div class="row">
+								<div class="input-field col s12 m4">
+									<input id="moname" type="text">
+									<label for="name">Name</label>
+								</div>
+								<div class="input-field col s12 m4">
+									<input id="moemail" type="email">
+									<label for="email">Email</label>
+								</div>
+								<div class="input-field col s12 m4">
+									<input id="momob" type="number">
+									<label for="mob">Mobile</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12 m4">
+									<input id="moadmi" type="text">
+									<label for="admi">Admission No.</label>
+								</div>
+								<div class="input-field col s12 m4">
+							   		<select id="mob">
+										<option value="0" disabled selected>Choose your option</option>
+				                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+				                        <option value="Electrical & Electronics Engineering">Electrical & Electronics Engineering</option>
+				                        <option value="Civil Engineering">Civil Engineering</option>
+				                        <option value="Mechanical Production Engineering">Mechanical Production Engineering</option>
+				                        <option value="Computer Science Engineering">Computer Science Engineering</option>
+				                        <option value="Electronics & Communication Engineering">Electronics & Communication Engineering</option>
+				                        <option value="Chemical Engineering">Chemical Engineering</option>
+				                        <option value="B.Arch">B.Arch</option>
+				                        <option value="MCA">MCA</option>
+				                        <option value="M.Tech">M.Tech</option>
+									</select>
+									<label>Branch</label>
+								</div>
+								<div class="input-field col s12 m4">
+									<select id="moy">
+										<option value="0" disabled selected>Choose your option</option>
+				                        <option value="First">First</option>
+				                        <option value="Second">Second</option>
+				                        <option value="Third">Third</option>
+				                        <option value="Fourth">Fourth</option>
+				                        <option value="Fifth">Fifth</option>
+									</select>
+									<label>Year</label>
+								</div>
+							</div>
+						</div>
+						<p style="font-size: 17px;margin-top: 40px">Member 4:</p>
+						<div>
+							<div class="row">
+								<div class="input-field col s12 m4">
+									<input id="mtname" type="text">
+									<label for="name">Name</label>
+								</div>
+								<div class="input-field col s12 m4">
+									<input id="mtemail" type="email">
+									<label for="email">Email</label>
+								</div>
+								<div class="input-field col s12 m4">
+									<input id="mtmob" type="number">
+									<label for="mob">Mobile</label>
+								</div>
+							</div>
+							<div class="row">
+								<div class="input-field col s12 m4">
+									<input id="mtadmi" type="text">
+									<label for="admi">Admission No.</label>
+								</div>
+								<div class="input-field col s12 m4">
+							   		<select id="mtb">
+										<option value="0" disabled selected>Choose your option</option>
+				                        <option value="Mechanical Engineering">Mechanical Engineering</option>
+				                        <option value="Electrical & Electronics Engineering">Electrical & Electronics Engineering</option>
+				                        <option value="Civil Engineering">Civil Engineering</option>
+				                        <option value="Mechanical Production Engineering">Mechanical Production Engineering</option>
+				                        <option value="Computer Science Engineering">Computer Science Engineering</option>
+				                        <option value="Electronics & Communication Engineering">Electronics & Communication Engineering</option>
+				                        <option value="Chemical Engineering">Chemical Engineering</option>
+				                        <option value="B.Arch">B.Arch</option>
+				                        <option value="MCA">MCA</option>
+				                        <option value="M.Tech">M.Tech</option>
+									</select>
+									<label>Branch</label>
+								</div>
+								<div class="input-field col s12 m4">
+									<select id="mty">
+										<option value="0" disabled selected>Choose your option</option>
+				                        <option value="First">First</option>
+				                        <option value="Second">Second</option>
+				                        <option value="Third">Third</option>
+				                        <option value="Fourth">Fourth</option>
+				                        <option value="Fifth">Fifth</option>
+									</select>
+									<label>Year</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div onclick="register()" class="reg">REGISTER</div>
+				</div>
+			</form>
+			<div class="post" style="display: none;text-align: center;">
+				<h5 class="ptext">Registration in Progress, Please Wait...</h5>
+			</div>
+		</div>
+	</div>
+	<script src="../js/jquery 3.1.1.min.js"></script>
+	<script src="../js/materialize.min.js"></script>
+	<script src="../js/query.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('select').material_select();
+		});	
+	</script>
+	<script type="text/javascript">
+		$(function () {
+			$('input.autocomplete').autocomplete({
+				data: {
+					"TKM College of Engineering": null,
+					"CET, Trivandrum": null,
+					"VKCET": null,
+					"Jyothi engineering college": null,
+					"College of Engineering, Kidangoor": null,
+					"NSS College of Engineering, Palakkad": null
+				}
+			});
+		});
+	</script>
+	<script>
+		firebase.auth().onAuthStateChanged(function(user) {
+			if (user) {
+                $(".login").addClass("hide");
+                $(".register").addClass("hide");
+                $(".logout").removeClass("hide");
+                $(".dashboard").removeClass("hide");
+            } else {
+                $(".logout").addClass("hide");
+                $(".dashboard").addClass("hide");
+                $(".login").removeClass("hide");
+                $(".register").removeClass("hide");
+			}
+		});
+		function signout() {
+			firebase.auth().signOut().then(function() {
+			  // Sign-out successful.
+			}).catch(function(error) {
+			  alert("You are not logged in to logout.");
+			});
+		}
+	    var database = firebase.database();
+	    function register() {
+	    	$('.reg').fadeOut();
+	    	$('.post').fadeIn();
+	        var tname = $("#tname").val();
+	        var ideaC = $("#ideaC option:selected").val();
+	        var ideaD = $("#ideaD").val();
+	        var college = $("#college").val();
+	        var memCount = $("#memCount option:selected").val();
+	        var tlname = $("#tlname").val();
+	        var tladmi = $("#tladmi").val();
+	        var tlemail = $("#tlemail").val();
+	        var tlmob = $("#tlmob").val();
+	        var tlb = $("#tlb option:selected").val();
+	        var tly = $("#tly option:selected").val();
+	        var mzname = $("#mzname").val();
+	        var mzadmi = $("#mzadmi").val();
+	        var mzemail = $("#mzemail").val();
+	        var mzmob = $("#mzmob").val();
+	        var mzb = $("#mzb option:selected").val();
+	        var mzy = $("#mzy option:selected").val();
+	        var moname = $("#moname").val();
+	        var moadmi = $("#moadmi").val();
+	        var moemail = $("#moemail").val();
+	        var momob = $("#momob").val();
+	        var mob = $("#mob option:selected").val();
+	        var moy = $("#moy option:selected").val();
+	        var mtname = $("#mtname").val();
+	        var mtadmi = $("#mtadmi").val();
+	        var mtemail = $("#mtemail").val();
+	        var mtmob = $("#mtmob").val();
+	        var mtb = $("#mtb option:selected").val();
+	        var mty = $("#mty option:selected").val();
+	        if(tname == '' || ideaC == '0' || college == '' || tlname == '' || tladmi == '' || tlemail == '' || tlmob == '' || tlb == '0' || tly == '0') {
+	        	alert('Incomplete fields'); 
+		    	$('.post').fadeOut();
+		    	$('.reg').fadeIn();
+	        }else {
+	        	var flag = 1, errMess = 0;
+		        var query = firebase.database().ref("map").orderByKey();
+		        query.once("value").then(function(snapshot) {
+		            snapshot.forEach(function(childSnapshot) {
+		                var em = childSnapshot.child("Email").val();
+		                var tm = childSnapshot.child("Team").val();
+		                if(tm==tname) {
+		                    flag = 0;
+		                }else if(em == tlemail) {
+		                    flag = 0;
+		                }
+		            });		            
+		            if(flag == 1) {
+			            firebase.auth().createUserWithEmailAndPassword(tlemail, tlmob).then(function() {
+							firebase.auth().onAuthStateChanged(function(user) {
+								if (user) {
+						            firebase.database().ref('map/' + user.uid).set({
+						                'Team': tname,
+						                'Leader': tlname,
+						                'Email': tlemail
+						            });
+							        firebase.database().ref('users/' + user.uid).set({
+						                'Category': ideaC,
+						                'Description': ideaD,
+						                'College': college,
+						                'MemberCount': memCount,
+						                'LName': tlname,
+						                'LAdmi': tladmi,
+						                'LEmail': tlemail,
+						                'LMob': tlmob,
+						                'LB': tlb,
+						                'LY': tly,
+						                'M0Name': mzname,
+						                'M0Admi': mzadmi,
+						                'M0Email': mzemail,
+						                'M0Mob': mzmob,
+						                'M0B': mzb,
+						                'M0Y': mzy,
+						                'M1Name': moname,
+						                'M1Admi': moadmi,
+						                'M1Email': moemail,
+						                'M1Mob': momob,
+						                'M1B': mob,
+						                'M1Y': moy,
+						                'M2Name': mtname,
+						                'M2Admi': mtadmi,
+						                'M2Email': mtemail,
+						                'M2Mob': mtmob,
+						                'M2B': mtb,
+						                'M2Y': mty,
+						                'Team': tname,
+						                'Phase1': false
+						            });
+						            $('.ptext').text('Registration Successful, Login using Leader\'s Email Id and mobile number as password.\n Redirecting to Dashboard');  
+				        			setTimeout(function(){
+					        			window.location.replace("http://sic.iedctkmce.com/dashboard/"); 
+								    }, 5000);
+								} else {
+
+								}
+							});
+			            }).catch(function(error) {
+							var errorCode = error.code;
+							var errorMessage = error.message;
+							errMess = 1;
+							alert(errorMessage + '\n Inform this error to Admin, 8089505502');
+					    	$('.post').fadeOut();
+					    	$('.reg').fadeIn();
+						});
+		            }else {
+		            	alert('Duplicate, Contact Web Admin, 8089505502');
+				    	$('.post').fadeOut();
+				    	$('.reg').fadeIn();
+		            }
+		        });
+			}
+	    };
+	</script>
+</body>
+</html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+	<title>Social Innovation Challenge | Sukrita 17 | IEDC TKMCE, Steps TKMCE</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/materialize.min.css">
+	<link rel="stylesheet" href="../css/animate.css">
+	<link href="https://fonts.googleapis.com/css?family=Catamaran" rel="stylesheet">
+	<style type="text/css">
+		body {
+			font-family: 'Catamaran', sans-serif;
+		}
+		.upper:hover {
+			color: #fff;
+			background-color: rgba(203, 203, 203, 0.53);
+		}
+		.reg {
+		    padding: 16px;
+		    width: 152px;
+		    text-align: center;
+		    background: #1565C0;
+		    color: #fff;
+		    margin: auto;
+		    text-decoration: none;
+		    color: #fff;
+		    text-align: center;
+		    letter-spacing: .5px;
+		    -webkit-transition: .2s ease-out;
+		    transition: .2s ease-out;
+		    cursor: pointer;
+		    font-size: 1rem;
+    		outline: 0;
+    		border: none;
+    		border-radius: 2px;
+		    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+		}
+		.reg:hover {
+		    background: #155194;
+		}
+        .drop {
+            padding: 12px;
+            width: 60px;
+            height: 45px;
+            overflow: hidden;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn1 {
+		    background: #1565C0;
+    	    float: left;
+		    height: 3rem;
+		    line-height: 3rem;
+		    text-decoration: none;
+		    color: #fff;
+		    text-align: center;
+		    letter-spacing: .5px;
+		    -webkit-transition: .2s ease-out;
+		    transition: .2s ease-out;
+		    cursor: pointer;
+		    font-size: 1rem;
+    		outline: 0;
+    		border: none;
+    		border-radius: 2px;
+		    display: inline-block;
+		    padding: 0 2rem;
+		    text-transform: uppercase;
+		    vertical-align: middle;
+		    -webkit-tap-highlight-color: transparent;
+		    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+        }
+        .btn1:hover {
+		    background: #155194;        	
+        }
+	</style>
+	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyAK3rFEGyCzUd7QUinjiSEAtnztbTR4m44",
+	    authDomain: "sicreg-6d789.firebaseapp.com",
+	    databaseURL: "https://sicreg-6d789.firebaseio.com",
+	    projectId: "sicreg-6d789",
+	    storageBucket: "gs://sicreg-6d789.appspot.com/",
+	    messagingSenderId: "900285567360"
+	  };
+	  firebase.initializeApp(config);
+	</script>
+</head>
+<body>
+	<div style="background: #f9f9f9;">
+		<div class="row container">
+			<div class="col m3 s8">
+				<img src="../img/logo.png" style="width: 180px;">
+			</div>
+	        <div class="col m7 push-m2 hide-on-small-only">
+	            <ul class="row" style="text-align: center;margin-top: 50px;">
+	                <div class="col m4"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/" style="color: #222;"><li>Home</li></a></div></div>
+	                <div class="col m4 login"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/login/" style="color: #222;"><li>Login</li></a></div></div>
+	                <div class="col m4 hide logout"><div class="upper" style="height: 45px;padding: 12px;"><a href="#" style="color: #222;" onclick="signout()"><li>LogOut</li></a></div></div>
+	                <div class="col m4 register"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/register/" style="color: #222;"><li>Register</li></a></div></div>
+	                <div class="col m4 hide dashboard"><div class="upper" style="height: 45px;padding: 12px;"><a href="#" style="color: #222;"><li>Dashboard</li></a></div></div>
+	            </ul>
+	        </div>
+            <div class="s4 hide-on-med-and-up" style="position: relative;right: -30px; bottom: -30px;">
+                <div class='dropdown-button drop' data-activates='dropdown1'><span>Menu</span></div>
+            </div>
+            <ul id='dropdown1' class='dropdown-content'>
+                <div><a href="http://sic.iedctkmce.com/"><li style="padding: 15px;font-weight: 400;">Home</li></a></div>
+                <div class="login"><a href="http://sic.iedctkmce.com/login/"><li style="padding: 15px;font-weight: 400;">Login</li></a>
+                <div class="hide logout"><a href="#" onclick="signout()"><li style="padding: 15px;font-weight: 400;">LogOut</li style="padding: 15px;font-weight: 500;"></a></div>
+                <div class="register"><a href="http://sic.iedctkmce.com/register/"><li style="padding: 15px;font-weight: 400;">Register</li></a></div>
+                <div class="hide dashboard"><a href="#"><li style="padding: 15px;font-weight: 400;">Dashboard</li></a></div>
+            </ul>
+        </div>
+	</div>
+	<div>
+		<div class="container">
+			<h4>DASHBOARD</h4>
+			<p><span>Instructions</span></p>
+			<ul style="list-style-type: disc;margin-left: 40px;">
+				<li style="list-style-type: disc;">Every phase would be uploaded as per the schedule.</li>
+				<li style="list-style-type: disc;">If any change in schedule occurs, we will inform you via mail.</li>
+				<li style="list-style-type: disc;">Results of each phase will be uploaded in the dashboard itself.</li>
+				<li style="list-style-type: disc;">Complete your work as per the schedule provided.</li>
+				<li style="list-style-type: disc;">Any queries regarding website, Contact 8089505502</li>
+			</ul>
+		</div>
+		<div class="row">
+			<h5 class="container" style="margin: 50px auto 20px;">Account Details</h5>
+			<div style="background: #f2f2f2;">
+				<div class="row container" style="padding: 40px;">
+					<div class="col s12 m6">
+						<p>Team Name: <span id="tname"></span></p>
+						<p>College: <span id="college"></span></p>
+						<p>Leader's Name: <span id="tlname"></span></p>
+						<p>Branch: <span id="branch"></span></p>
+						<p>Year: <span id="year"></span></p>
+					</div>
+					<div class="col s12 m6">
+						<p>Category: <span id="category"></span></p>
+						<p>Description: <span id="desc"></span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<form>
+				<h5 class="container" style="margin: 50px auto 20px;">Phase 1</h5>
+				<div style="background: #f2f2f2;">
+					<div class="row container" style="padding: 40px;">		
+						<div class="row" style="text-align: center;">
+							<h6 style="text-align: left;position: relative;top: 5px;" class="col s12 m4">Upload an abstract regarding your idea. The file maybe in *.docx or *.pdf format.</h6>
+							<h6 class="col s6 m4"><span style="position: relative;top: -20px;">Format </span><a href="Format.docx"><img src="../img/file.png" width="50"></a></h6>
+							<h6 class="col s6 m4"><span style="position: relative;top: -20px;">Sample </span><a href="Sample.docx"><img src="../img/file.png" width="50"></a></a></h6>
+						</div>
+						<div class="row">
+							<div class="file-field input-field" style="margin-top: 40px;">
+						    	<div class="btn1">
+						    		<span>File</span>
+						   			<input type="file" id="phaseone">
+						    	</div>
+						    	<div class="file-path-wrapper">
+						    		<input class="file-path validate" type="text">
+						    	</div>
+						    </div>
+						</div>
+						<div style="text-align: center;" id="uploadOpt">
+							<progress value="0" max="100" id="uploader" class="hide" style="-webkit-appearance: none;appearance: none;width: 50%;height: 30px;margin-bottom: 50px;">0%</progress>
+							<div onclick="uploadfile()" class="reg hide" style="margin-top: 20px;" id="upbt">Upload</div>
+						</div>
+						<div style="text-align: center;" class="hide" id="uploadDone">
+							<h6 style="color: #00ff00;">Upload Completed</h6>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="../js/jquery 3.1.1.min.js"></script>
+	<script src="../js/materialize.min.js"></script>
+	<script src="../js/query.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('select').material_select();
+		});	
+	</script>
+	<script>
+		var selFile;
+		firebase.auth().onAuthStateChanged(function(user) {
+			if (user) {
+                $(".login").addClass("hide");
+                $(".register").addClass("hide");
+                $(".logout").removeClass("hide");
+                $(".dashboard").removeClass("hide");
+				var query = firebase.database().ref("users").orderByKey();
+		        query.once("value").then(function(snapshot) {
+		            snapshot.forEach(function(childSnapshot) {
+		            	if(childSnapshot.key == user.uid) {
+		            		$('#college').text(childSnapshot.child("College").val());
+		            		$('#tlname').text(childSnapshot.child("LName").val());
+		            		$('#branch').text(childSnapshot.child("LB").val());
+		            		$('#year').text(childSnapshot.child("LY").val());
+		            		$('#category').text(childSnapshot.child("Category").val());
+		            		$('#desc').text(childSnapshot.child("Description").val());
+		            		$('#tname').text(childSnapshot.child("Team").val());
+		            		if(childSnapshot.child("Phase1").val() == true) {
+								$('#upbt').addClass("hide");
+		            			$('#uploadDone').removeClass("hide");
+		            		}
+		            	}
+		            });
+		        });
+            } else {
+                $(".logout").addClass("hide");
+                $(".dashboard").addClass("hide");
+                $(".login").removeClass("hide");
+                $(".register").removeClass("hide");
+                window.location.replace("http://sic.iedctkmce.com/login/"); 
+			}
+		});
+		function signout() {
+			firebase.auth().signOut().then(function() {
+			  // Sign-out successful.
+			}).catch(function(error) {
+			  alert("You are not logged in to logout.");
+			});
+		}
+		$('#phaseone').on("change", function(event) {
+			selFile = event.target.files[0];
+			$('#upbt').removeClass("hide");
+		});
+		function uploadfile() {
+			$('#upbt').addClass("hide");
+			$('#uploader').removeClass("hide");
+			var input = document.getElementById('phaseone');
+			if (!input.files[0]) {
+				alert("Please select a file before clicking 'Load'");  
+				$('#uploader').addClass("hide");     
+				$('#upbt').removeClass("hide");        
+			}else {
+				var file = input.files[0];
+	        	var storageRef = firebase.storage().ref('Phase1/' + $('#tname').text() + '_' + file.name);
+	        	var task = storageRef.put(file);
+	        	task.on('state _changed', function progress(snapshot) {
+	        		var percent = (snapshot.bytesTransferred/snapshot.totalBytes) * 100;
+	        		$('#uploader').value(percent);
+	        	}, function error(err) {
+	        		alert(err);
+					$('#uploader').addClass("hide");
+					$('#upbt').removeClass("hide");
+	        	}, function complete() {
+					firebase.database().ref('stages/' + user.uid).set({
+		                'Phase1': true,
+		            });
+					firebase.database().ref('users/' + user.uid).set({
+		                'Phase1': true,
+		            });
+		            $('#uploadDone').removeClass("hide");
+	        	});
+			}
+		}
+	</script>
+</body>
+</html>
