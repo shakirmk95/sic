@@ -78,7 +78,6 @@
 	</style>
 	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
 	<script>
-	  // Initialize Firebase
 	  var config = {
 	    apiKey: "AIzaSyAK3rFEGyCzUd7QUinjiSEAtnztbTR4m44",
 	    authDomain: "sicreg-6d789.firebaseapp.com",
@@ -110,14 +109,18 @@
                 <div><a href="http://sic.iedctkmce.com/"><li style="padding: 15px;font-weight: 400;">Home</li></a></div>
                 <div class="login"><a href="http://sic.iedctkmce.com/login/"><li style="padding: 15px;font-weight: 400;">Login</li></a>
                 <div class="hide logout"><a href="#" onclick="signout()"><li style="padding: 15px;font-weight: 400;">LogOut</li style="padding: 15px;font-weight: 500;"></a></div>
-                <div class="register"><a href="http://sic.iedctkmce.com/register/"><li style="padding: 15px;font-weight: 400;">Register</li></a></div>
-                <div class="hide dashboard"><a href="#"><li style="padding: 15px;font-weight: 400;">Dashboard</li></a></div>
             </ul>
         </div>
 	</div>
 	<div>
 		<div class="container">
 			<h4>ADMIN PANEL</h4>
+			<p><span>Instructions</span></p>
+			<ul style="list-style-type: disc;margin-left: 40px;">
+				<li style="list-style-type: disc;color: #ff0000;">Be careful with the Select Buttons.</li>
+				<li style="list-style-type: disc;color: #ff0000;">Keep an Hard copy of selected Candidates.</li>
+				<li style="list-style-type: disc;">This displays only candidates who have submitted the abstract.</li>
+			</ul>
 		</div>
 		<div class="row">
 			<h5 class="container" style="margin: 50px auto 20px;">Total Registrations (<span id="count"></span>)</h5>
@@ -148,17 +151,21 @@
 					            snapshot1.forEach(function(childSnapshot1) {
 					            	if(childSnapshot1.key == childSnapshot.key) {
 					            		var filenm = childSnapshot1.child("P1File").val();
+					            		// var selectedYes = childSnapshot1.child("Phase1R").val();
+					            		// if(selectedYes == null || selectedYes == false) {
+					            		// 	selectedYes = '';
+					            		// }else if(selectedYes == true) {
+					            		// 	selectedYes = 'checked';
+					            		// }
 								        var starsRef = firebase.storage().ref('/PhaseOne/' + filenm);
 								        starsRef.getDownloadURL().then(function(url) {
-		            						$('.append1').append('<div class="row"><div class="col s4"><span style="font-weight: 600;">' + childSnapshot.child("Team").val() + '</span></div><div class="col s8"><div class="row"><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Team Leader: </div><div>' + childSnapshot.child("LName").val() + '</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Mobile: </div><div>' + childSnapshot.child("LMob").val() + '</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">College: </div><div>' + childSnapshot.child("College").val() +'</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Category: </div><div>' + childSnapshot.child("Category").val() + '</div></div><div class="col s12 m12"><div style="font-size: 10px;">Description: </div><div>' + childSnapshot.child("Description").val() + '</div></div><div class="col s12 m12 fileUpl1" style="margin-bottom: 10px;"><div>Phase1: <a href="' + url + '">' + filenm + '</a></div></div></div></div></div>');
+		            						$('.append1').append('<div class="row"><div class="col s4"><span style="font-weight: 600;">' + childSnapshot.child("Team").val() + '</span></div><div class="col s8"><div class="row"><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Team Leader: </div><div>' + childSnapshot.child("LName").val() + '</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Mobile: </div><div>' + childSnapshot.child("LMob").val() + '</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">College: </div><div>' + childSnapshot.child("College").val() +'</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Category: </div><div>' + childSnapshot.child("Category").val() + '</div></div><div class="col s12 m12"><div style="font-size: 10px;">Description: </div><div>' + childSnapshot.child("Description").val() + '</div></div><div class="col s12 m12 fileUpl1" style="margin-bottom: 10px;"><div>Phase1: <a href="' + url + '">' + filenm + '</a></div></div><div class="col s12 m12"><p><input type="checkbox" class="checkbox" id="' + childSnapshot.key + '"/><label for="' + childSnapshot.key + '">Selected</label></p></div></div></div></div>');
 										}).catch(function(error) {
 											console.log('ERROR' + '_' + error);
 										});
 					            	}
 					            });
 					        });
-					    }else {
-		            		$('.append1').append('<div class="row"><div class="col s4"><span style="font-weight: 600;">' + childSnapshot.child("Team").val() + '</span></div><div class="col s8"><div class="row"><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Team Leader: </div><div>' + childSnapshot.child("LName").val() + '</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Mobile: </div><div>' + childSnapshot.child("LMob").val() + '</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">College: </div><div>' + childSnapshot.child("College").val() +'</div></div><div class="col s12 m6" style="margin-bottom: 10px;"><div style="font-size: 10px;">Category: </div><div>' + childSnapshot.child("Category").val() + '</div></div><div class="col s12 m12"><div style="font-size: 10px;">Description: </div><div>' + childSnapshot.child("Description").val() + '</div></div></div></div></div>');
 					    }
 		            });
 		        });
@@ -182,6 +189,15 @@
 			  alert("You are not logged in to logout.");
 			});
 		}
+		// $('.checkbox').click(function() {
+		// 	var id = $(this).attr("id");
+		// 	alert("id: " + id);
+		// 	if($(this).prop('checked')) {
+		// 		alert("yes");
+		// 	}else {
+		// 		alert("no");
+		// 	}
+		// });
 	</script>
 </body>
 </html>

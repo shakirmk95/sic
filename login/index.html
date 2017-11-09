@@ -63,7 +63,6 @@
 	</style>
 	<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
 	<script>
-	  // Initialize Firebase
 	  var config = {
 	    apiKey: "AIzaSyAK3rFEGyCzUd7QUinjiSEAtnztbTR4m44",
 	    authDomain: "sicreg-6d789.firebaseapp.com",
@@ -86,8 +85,7 @@
 	                <div class="col m4"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/" style="color: #222;"><li>Home</li></a></div></div>
 	                <div class="col m4 login"><div class="upper" style="height: 45px;padding: 12px;"><a href="#" style="color: #222;"><li>Login</li></a></div></div>
 	                <div class="col m4 hide logout"><div class="upper" style="height: 45px;padding: 12px;"><a href="#" style="color: #222;" onclick="signout()"><li>LogOut</li></a></div></div>
-	                <div class="col m4 register"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/register/" style="color: #222;"><li>Register</li></a></div></div>
-	                <div class="col m4 hide dashboard"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/dashboard/" style="color: #222;"><li>Dashboard</li></a></div></div>
+	                <div class="col m4 dashboard"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/dashboard/" style="color: #222;"><li>Dashboard</li></a></div></div>
 	            </ul>
 	        </div>
             <div class="s4 hide-on-med-and-up" style="position: relative;right: -30px; bottom: -30px;">
@@ -97,8 +95,7 @@
                 <div><a href="http://sic.iedctkmce.com/"><li style="padding: 15px;font-weight: 400;">Home</li></a></div>
                 <div class="login"><a href="#"><li style="padding: 15px;font-weight: 400;">Login</li></a>
                 <div class="hide logout"><a href="#" onclick="signout()"><li style="padding: 15px;font-weight: 400;">LogOut</li style="padding: 15px;font-weight: 500;"></a></div>
-                <div class="register"><a href="http://sic.iedctkmce.com/register/"><li style="padding: 15px;font-weight: 400;">Register</li></a></div>
-                <div class="hide dashboard"><a href="http://sic.iedctkmce.com/dashboard/"><li style="padding: 15px;font-weight: 400;">Dashboard</li></a></div>
+                <div class="dashboard"><a href="http://sic.iedctkmce.com/dashboard/"><li style="padding: 15px;font-weight: 400;">Dashboard</li></a></div>
             </ul>
         </div>
 	</div>
@@ -137,19 +134,15 @@
 		firebase.auth().onAuthStateChanged(function(user) {
 			if (user) {
                 $(".login").addClass("hide");
-                $(".register").addClass("hide");
                 $(".logout").removeClass("hide");
-                $(".dashboard").removeClass("hide");
             } else {
                 $(".logout").addClass("hide");
-                $(".dashboard").addClass("hide");
                 $(".login").removeClass("hide");
-                $(".register").removeClass("hide");
 			}
 		});
 		function signout() {
 			firebase.auth().signOut().then(function() {
-			  // Sign-out successful.
+
 			}).catch(function(error) {
 			  alert("You are not logged in to logout.");
 			});
@@ -166,7 +159,6 @@
     				window.location.replace("http://sic.iedctkmce.com/dashboard/"); 
 	    		}
 	    	}).catch(function(error) {
-				// Handle Errors here.
 				var errorCode = error.code;
 				var errorMessage = error.message;
 		    	$('.loading').addClass('hide');
@@ -174,6 +166,9 @@
 				alert(errorMessage + '\n Inform this error to Admin, 8089505502');
 			});
 	    };
+	    function forgot() {
+	    	alert('Call the Web Admin, 8089505502');
+	    }
 	</script>
 </body>
 </html>
