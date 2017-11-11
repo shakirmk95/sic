@@ -151,16 +151,48 @@
 				<div style="background: #f2f2f2;">
 					<div class="row container" style="padding: 40px;">		
 						<div class="row" style="text-align: center;">
-							<h5 style="text-align: left;position: relative;top: 5px;" class="col s12 m12">Results will be announced here.</h5>
+							<h5 style="text-align: left;position: relative;top: 5px;" class="col s12 m12">Phase1 Completed</h5>
 						</div>
 						<div style="text-align: center;" class="hide" id="uploadDone">
-							<h6 style="color: #00ff00;">Upload Completed, We are Evaluating</h6>
+							<h6 style="color: #ff0000;">You are not selected, Better luck Next Time</h6>
 						</div>
 						<div style="text-align: center;" class="hide" id="selectedN">
 							<h6 style="color: #00ff00;">You are selected for next round.</h6>
 						</div>
 						<div style="text-align: center;" id="uploadClosed">
 							<h6 style="color: #ff0000;">Upload Closed, Better luck next time</h6>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div class="row phase2 hide">
+			<form>
+				<h5 class="container" style="margin: 50px auto 20px;">Phase 2</h5>
+				<div style="background: #f2f2f2;">
+					<div class="row container" style="padding: 40px;">		
+						<div class="row" style="text-align: center;">
+							<h6 style="text-align: center;position: relative;top: 5px;" class="col s12 m12">Upload a PPT for presentation. The file maybe in *.ppt or *.pdf format.</h6>
+							<!-- <h6 class="col s6 m4"><span style="position: relative;top: -20px;">Format </span><a href="Format.docx"><img src="../img/file.png" width="50"></a></h6> -->
+							<!-- <h6 class="col s6 m4"><span style="position: relative;top: -20px;">Sample </span><a href="Sample.docx"><img src="../img/file.png" width="50"></a></h6> -->
+						</div>
+						<div class="row fileuploader">
+							<div class="file-field input-field" style="margin-top: 40px;">
+						    	<div class="btn1">
+						    		<span>File</span>
+						   			<input type="file" id="phasetwo">
+						    	</div>
+						    	<div class="file-path-wrapper">
+						    		<input class="file-path validate" type="text">
+						    	</div>
+						    </div>
+						</div>
+						<div style="text-align: center;" id="uploadOpt">
+							<h5 id="uploader"></h5>
+							<div onclick="uploadfile()" class="reg hide" style="margin-top: 20px;" id="upbt">Upload</div>
+						</div>
+						<div style="text-align: center;" class="hide" id="uploadDone2">
+							<h6 style="color: #00ff00;">Upload Completed</h6>
 						</div>
 					</div>
 				</div>
@@ -196,10 +228,15 @@
 		            		if(childSnapshot.child("Phase1").val() == true) {
 								$('#uploadClosed').addClass("hide");
 		            			$('#uploadDone').removeClass("hide");
+			            		if(childSnapshot.child("Phase1R").val() == true) {
+			            			$('#selectedN').removeClass("hide");
+		            				$('#uploadDone').addClass("hide");
+			            			$('.phase2').removeClass("hide");
+			            		}
 		            		}
-		            		if(childSnapshot.child("Phase1R").val() == true) {
+		            		if(childSnapshot.child("Phase2").val() == true) {
 								$('#uploadClosed').addClass("hide");
-		            			$('#selectedN').removeClass("hide");
+		            			$('#uploadDone2').removeClass("hide");
 		            		}
 		        			$('.phase1').removeClass("hide");
 		            	}
@@ -211,12 +248,46 @@
                 window.location.replace("http://sic.iedctkmce.com/login/"); 
 			}
 		});
+		$('#phasetwo').on("change", function(event) {
+			selFile = event.target.files[0];
+			$('#upbt').removeClass("hide");
+		});
 		function signout() {
 			firebase.auth().signOut().then(function() {
 
 			}).catch(function(error) {
 			  alert("You are not logged in to logout.");
 			});
+		}
+	    var database = firebase.database();
+		function uploadfile() {
+			$('#upbt').addClass("hide");
+			$('#uploader').removeClass("hide");
+        	var filename = $('#tname').text() + '_' + selFile.name;
+        	var storageRef = firebase.storage().ref('/PhaseTwo/' + filename);
+        	var task = storageRef.put(selFile);
+        	task.on('state_changed', function progress(snapshot) {
+        		var percent = (snapshot.bytesTransferred/snapshot.totalBytes) * 100;
+        		$('#uploader').text(percent + '%');
+        		console.log('uploading');
+        	}, function error(err) {
+        		alert(err.code + ': ERROR :' + err.message);
+				$('#uploader').addClass("hide");
+				$('#upbt').removeClass("hide");
+        	}, function complete() {
+        		console.log('completed');
+        		var user = firebase.auth().currentUser;
+				firebase.database().ref('stages/' + user.uid).update({
+	                'Phase2': true,
+	                'P2File': filename
+	            });
+				firebase.database().ref('users/' + user.uid).update({
+	                'Phase2': true,
+	                'P2File': filename
+	            });
+	            $('.fileuploader').addClass("hide");
+	            $('#uploadDone2').removeClass("hide");
+        	});
 		}
 	</script>
 </body>
