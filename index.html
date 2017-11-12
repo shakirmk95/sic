@@ -6,58 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="keywords" content="">
-	<title></title>
-	<link rel="stylesheet" href="css/style.css">
+    <title>Social Innovation Challenge | Sukrita 17 | IEDC TKMCE, Steps TKMCE</title>
 	<link rel="stylesheet" href="css/materialize.min.css">
-	<link rel="stylesheet" href="css/animate.css">
-    <style type="text/css">
-        .reg {
-            padding: 16px;
-            width: 152px;
-            text-align: center;
-            background: #1565C0;
-            color: #fff;
-            margin: auto;
-            text-decoration: none;
-            color: #fff;
-            text-align: center;
-            letter-spacing: .5px;
-            -webkit-transition: .2s ease-out;
-            transition: .2s ease-out;
-            cursor: pointer;
-            font-size: 1rem;
-            outline: 0;
-            border: none;
-            border-radius: 2px;
-            box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
-        }        .reg:hover {
-            background: #155194;
-        }
-        .upper:hover {
-            color: #fff;
-            background-color: rgba(203, 203, 203, 0.53);
-        }
-        .drop {
-            padding: 12px;
-            width: 60px;
-            height: 45px;
-            overflow: hidden;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-    </style>
-    <script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
-    <script>
-      var config = {
-        apiKey: "AIzaSyAK3rFEGyCzUd7QUinjiSEAtnztbTR4m44",
-        authDomain: "sicreg-6d789.firebaseapp.com",
-        databaseURL: "https://sicreg-6d789.firebaseio.com",
-        projectId: "sicreg-6d789",
-        storageBucket: "",
-        messagingSenderId: "900285567360"
-      };
-      firebase.initializeApp(config);
-    </script>
 </head>
 <body style="height: 100%;width: 100%;background: #fafafa;">
     <div style="background: #fafafa;">
@@ -65,39 +15,13 @@
             <div class="col m3 s8">
                 <img src="img/logo.png" style="width: 180px;">
             </div>
-            <div class="col m7 push-m2 hide-on-small-only">
-                <ul class="row" style="text-align: center;margin-top: 50px;">
-                    <div class="col m4"><div class="upper" style="height: 45px;padding: 12px;"><a href="#" style="color: #222;"><li>Home</li></a></div></div>
-                    <div class="col m4 login"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/login/" style="color: #222;"><li>Login</li></a></div></div>
-                    <div class="col m4 hide logout"><div class="upper" style="height: 45px;padding: 12px;"><a href="#" style="color: #222;" onclick="signout()"><li>LogOut</li></a></div></div>
-                    <div class="col m4 dashboard"><div class="upper" style="height: 45px;padding: 12px;"><a href="http://sic.iedctkmce.com/dashboard/" style="color: #222;"><li>Dashboard</li></a></div></div>
-                </ul>
-            </div>
-            <div class="s4 hide-on-med-and-up" style="position: relative;right: -30px; bottom: -30px;">
-                <div class='dropdown-button drop' data-activates='dropdown1'><span>Menu</span></div>
-            </div>
-            <ul id='dropdown1' class='dropdown-content'>
-                <div><a href="#"><li style="padding: 15px;font-weight: 400;">Home</li></a></div>
-                <div class="login"><a href="http://sic.iedctkmce.com/login/"><li style="padding: 15px;font-weight: 400;">Login</li></a>
-                <div class="hide logout"><a href="#" onclick="signout()"><li style="padding: 15px;font-weight: 400;">LogOut</li style="padding: 15px;font-weight: 500;"></a></div>
-                <div class="dashboard"><a href="http://sic.iedctkmce.com/dashboard/"><li style="padding: 15px;font-weight: 400;">Dashboard</li></a></div>
-            </ul>
         </div>
     </div>
     <div class="" style="margin-top: 50px auto;;">
         <div class="container" style="background: #fff;margin: 20px auto;padding: 1px 40px;">
             <div style="margin: 50px auto;width: 100%;">
-                <marquee>
-                   Shortlisted Results are out, All Shortlisted Teams should report at <b>TKM College of Engineering</b> on <b>12<sup>th</sup> November 2017 by 09:00AM</b>.
-                </marquee>
-            </div>
-            <div style="margin: 50px auto;width: 100%;">
-                <h6 class="text-align: center"><span style="position: relative;top: -20px;">Result </span><a href="Pass.xlsx"><img src="img/file.png" width="50"></a></a></h6>
-            </div>
-            <div style="margin: 50px auto;width: 100%;">
-                <marquee>
-                   The <span style="color: #ff0000;">PPT</span> for the pitch deck should be uploded on or before <b>11th November 2017</b>.
-                </marquee>
+                <h3 class="text-align: center;color: #00ff00;">Congratulation Winners!..</h3>
+                <h6 class="text-align: center;color: #222;">1. Omega<br>2. Invento<br>3. Smart Flush Sanitation System for Kuttanad</h6>
             </div>
             <div style="margin: 50px auto;">
                 <div>
@@ -163,24 +87,5 @@
     <script src="js/db.js"></script>
 	<script src="js/jquery 3.1.1.min.js"></script>
 	<script src="js/materialize.min.js"></script>
-	<script src="js/query.js"></script>
-    <script type="text/javascript">
-        firebase.auth().onAuthStateChanged(function(user) {
-            if (user) {
-                $(".login").addClass("hide");
-                $(".logout").removeClass("hide");
-            } else {
-                $(".logout").addClass("hide");
-                $(".login").removeClass("hide");
-            }
-        });
-        function signout() {
-            firebase.auth().signOut().then(function() {
-                
-            }).catch(function(error) {
-              alert("You are not logged in to logout.");
-            });
-        }
-    </script>
 </body>
 </html>
